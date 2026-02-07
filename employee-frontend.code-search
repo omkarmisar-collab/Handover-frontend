@@ -1,0 +1,27 @@
+# Query: employee-frontend
+# ContextLines: 1
+
+5 results - 3 files
+
+angular.json:
+   5    "projects": {
+   6:     "employee-frontend": {
+   7        "projectType": "application",
+
+  61              "development": {
+  62:               "buildTarget": "employee-frontend:build:development"
+  63              }
+
+package-lock.json:
+  1  {
+  2:   "name": "employee-frontend",
+  3    "version": "0.0.0",
+
+  7      "": {
+  8:       "name": "employee-frontend",
+  9        "version": "0.0.0",
+
+src\app\app.spec.ts:
+  20      const compiled = fixture.nativeElement as HTMLElement;
+  21:     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, employee-frontend');
+  22    });
