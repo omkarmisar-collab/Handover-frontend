@@ -17,4 +17,9 @@ export class SourcingService {
   addItem(item: SourcingItem): Observable<SourcingItem> {
     return this.http.post<SourcingItem>(this.apiUrl, item);
   }
+
+  // PUT (UPDATE)
+  updateItem(id: number, item: SourcingItem): Observable<SourcingItem> {
+    return this.http.put<SourcingItem>(`${this.apiUrl}/${id}`, item);
+  }
 }

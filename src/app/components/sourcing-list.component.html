@@ -1,49 +1,118 @@
 <div class="container-fluid mt-4">
   <h2 class="text-center mb-4">New Parts Handing Over To Sourcing</h2>
 
+  <!-- FORM CARD -->
   <div class="card shadow mb-4">
-    <div class="card-header bg-primary text-white">
-      <h4 class="mb-0">Add New Sourcing Item</h4>
+    <div class="card-header text-white"
+         [ngClass]="isEditMode ? 'bg-warning' : 'bg-primary'">
+      <h4 class="mb-0">
+        {{ isEditMode ? 'Update Sourcing Item' : 'Add New Sourcing Item' }}
+      </h4>
     </div>
+
     <div class="card-body">
       <div class="row g-3">
-        <div class="col-md-2"><label class="form-label">SAP Code</label><input [(ngModel)]="newItem.sapCode" class="form-control"></div>
-        <div class="col-md-4"><label class="form-label">Description</label><input [(ngModel)]="newItem.description" class="form-control"></div>
-        <div class="col-md-2"><label class="form-label">Drawing Rev</label><input [(ngModel)]="newItem.drawingRevision" class="form-control"></div>
-        <div class="col-md-2"><label class="form-label">Commodity</label><input [(ngModel)]="newItem.commodity" class="form-control"></div>
-        <div class="col-md-2"><label class="form-label">Supplier</label><input [(ngModel)]="newItem.supplier" class="form-control"></div>
-        
-        <div class="col-md-2"><label class="form-label">Buyer CST</label><input [(ngModel)]="newItem.buyerCST" class="form-control"></div>
-        <div class="col-md-2"><label class="form-label">Application</label><input [(ngModel)]="newItem.applicationProduct" class="form-control"></div>
-        <div class="col-md-2"><label class="form-label">Customer Code</label><input [(ngModel)]="newItem.customerCode" class="form-control"></div>
-        <div class="col-md-3"><label class="form-label">Tool Status</label><input [(ngModel)]="newItem.toolCostStatus" class="form-control"></div>
-        <div class="col-md-3"><label class="form-label">Dual Source</label><input [(ngModel)]="newItem.dualSource" class="form-control"></div>
 
-        <div class="col-md-3"><label class="form-label">SA Number</label><input [(ngModel)]="newItem.saReleasedNumber" class="form-control"></div>
-        <div class="col-md-5"><label class="form-label">Remarks</label><input [(ngModel)]="newItem.remarks" class="form-control"></div>
-        
+        <div class="col-md-2">
+          <label class="form-label">SAP Code</label>
+          <input [(ngModel)]="newItem.sapCode" class="form-control">
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Description</label>
+          <input [(ngModel)]="newItem.description" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Drawing Rev</label>
+          <input [(ngModel)]="newItem.drawingRevision" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Commodity</label>
+          <input [(ngModel)]="newItem.commodity" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Supplier</label>
+          <input [(ngModel)]="newItem.supplier" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Buyer CST</label>
+          <input [(ngModel)]="newItem.buyerCST" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Application</label>
+          <input [(ngModel)]="newItem.applicationProduct" class="form-control">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label">Customer Code</label>
+          <input [(ngModel)]="newItem.customerCode" class="form-control">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Tool Status</label>
+          <input [(ngModel)]="newItem.toolCostStatus" class="form-control">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">Dual Source</label>
+          <input [(ngModel)]="newItem.dualSource" class="form-control">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label">SA Number</label>
+          <input [(ngModel)]="newItem.saReleasedNumber" class="form-control">
+        </div>
+
+        <div class="col-md-5">
+          <label class="form-label">Remarks</label>
+          <input [(ngModel)]="newItem.remarks" class="form-control">
+        </div>
+
         <div class="col-md-4 d-flex align-items-center gap-3 pt-4">
           <div class="form-check">
-            <input type="checkbox" [(ngModel)]="newItem.isirDocuments" class="form-check-input" id="isir">
+            <input type="checkbox" [(ngModel)]="newItem.isirDocuments"
+                   class="form-check-input" id="isir">
             <label class="form-check-label" for="isir">ISIR</label>
           </div>
+
           <div class="form-check">
-            <input type="checkbox" [(ngModel)]="newItem.ppapDocument" class="form-check-input" id="ppap">
+            <input type="checkbox" [(ngModel)]="newItem.ppapDocument"
+                   class="form-check-input" id="ppap">
             <label class="form-check-label" for="ppap">PPAP</label>
           </div>
+
           <div class="form-check">
-            <input type="checkbox" [(ngModel)]="newItem.costingSheet" class="form-check-input" id="costing">
+            <input type="checkbox" [(ngModel)]="newItem.costingSheet"
+                   class="form-check-input" id="costing">
             <label class="form-check-label" for="costing">Costing Sheet</label>
           </div>
         </div>
 
-        <div class="col-12 mt-3">
-          <button (click)="onSave()" class="btn btn-success float-end px-5">Add to Database</button>
+        <!-- BUTTONS -->
+        <div class="col-12 mt-3 text-end">
+          <button (click)="onSave()"
+                  class="btn px-5"
+                  [ngClass]="isEditMode ? 'btn-warning' : 'btn-success'">
+            {{ isEditMode ? 'Update' : 'Add to Database' }}
+          </button>
+
+          <button *ngIf="isEditMode"
+                  (click)="afterSave()"
+                  class="btn btn-secondary ms-2">
+            Cancel
+          </button>
         </div>
+
       </div>
     </div>
   </div>
 
+  <!-- TABLE -->
   <div class="table-responsive shadow">
     <table class="table table-hover table-bordered mb-0">
       <thead class="table-dark text-center">
@@ -64,10 +133,13 @@
           <th>Dual Source</th>
           <th>SA Number</th>
           <th>Remarks</th>
+          <th>Actions</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr *ngFor="let item of sourcingItems; let i = index" class="text-center align-middle">
+        <tr *ngFor="let item of sourcingItems; let i = index"
+            class="text-center align-middle">
           <td>{{ i + 1 }}</td>
           <td>{{ item.sapCode }}</td>
           <td>{{ item.description }}</td>
@@ -77,16 +149,34 @@
           <td>{{ item.buyerCST }}</td>
           <td>{{ item.applicationProduct }}</td>
           <td>{{ item.customerCode }}</td>
-          <td><span [class]="item.isirDocuments ? 'text-success' : 'text-danger'">{{ item.isirDocuments ? '✔' : '✘' }}</span></td>
-          <td><span [class]="item.ppapDocument ? 'text-success' : 'text-danger'">{{ item.ppapDocument ? '✔' : '✘' }}</span></td>
-          <td><span [class]="item.costingSheet ? 'text-success' : 'text-danger'">{{ item.costingSheet ? '✔' : '✘' }}</span></td>
+
+          <td><span [class]="item.isirDocuments ? 'text-success' : 'text-danger'">
+            {{ item.isirDocuments ? '✔' : '✘' }}</span></td>
+
+          <td><span [class]="item.ppapDocument ? 'text-success' : 'text-danger'">
+            {{ item.ppapDocument ? '✔' : '✘' }}</span></td>
+
+          <td><span [class]="item.costingSheet ? 'text-success' : 'text-danger'">
+            {{ item.costingSheet ? '✔' : '✘' }}</span></td>
+
           <td>{{ item.toolCostStatus }}</td>
           <td>{{ item.dualSource }}</td>
           <td>{{ item.saReleasedNumber }}</td>
           <td>{{ item.remarks }}</td>
+
+          <td>
+            <button class="btn btn-sm btn-outline-primary"
+                    (click)="editItem(item)">
+              Edit
+            </button>
+          </td>
         </tr>
+
         <tr *ngIf="sourcingItems.length === 0">
-          <td colspan="16" class="text-center text-muted py-4">No records found. Enter details above to add data.</td>
+          <td colspan="17"
+              class="text-center text-muted py-4">
+            No records found. Enter details above to add data.
+          </td>
         </tr>
       </tbody>
     </table>
