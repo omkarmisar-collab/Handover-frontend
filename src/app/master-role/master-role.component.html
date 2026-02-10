@@ -1,0 +1,19 @@
+<h2>Master Role</h2>
+<div>
+  <input type="text" placeholder="Role Name" [(ngModel)]="newRole.roleName">
+  <input type="text" placeholder="Permission" [(ngModel)]="newRole.permission">
+  <button (click)="addRole()">Add Role</button>
+</div>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Role Name</th>
+    <th>Permission</th>
+  </tr>
+  <tr *ngFor="let role of roles">
+    <td>{{role.roleId}}</td>
+    <td>{{role.roleName}}</td>
+    <td>{{role.permission}}</td>
+  </tr>
+</table>

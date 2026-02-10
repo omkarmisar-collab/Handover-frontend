@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { SourcingListComponent } from './components/sourcing-list.component'; 
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [SourcingListComponent], // Removed RouterOutlet to fix warning
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  imports: [RouterOutlet],
+  templateUrl: './app.html'
 })
 export class AppComponent {
-  title = 'sourcing-frontend';
 }
